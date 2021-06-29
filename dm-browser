@@ -3,8 +3,8 @@
 # A  browser-independent address  bar  with bookmark  support. When  the
 # cursor is on a web browser it acts as the address bar of that browser.
 
-browser='firefox --new-window'
-engine='https://duckduckgo.com/?q=%s'
+browser='firefox'
+engine='https://search.brave.com/search?q=%s'
 bookmarks="$HOME/.bookmarks"
 
 gotourl() {
