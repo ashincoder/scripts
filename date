@@ -1,5 +1,5 @@
 #!/bin/sh
 
-date="$(date +'%a %b %d - %I:%M')"
+date="$(date "+%Y %b %d (%a) %I:%M%p")"
 
-echo "$date"
+echo "${date}"
