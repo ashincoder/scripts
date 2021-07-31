@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rofi -modi "calc:~/.config/rofi/bin/calc_rofi" -show calc
