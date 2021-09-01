@@ -40,7 +40,7 @@ video() {
 		-s "$(xdpyinfo | grep dimensions | awk '{print $2;}')" \
 		-i "$DISPLAY" \
 		-c:v libx264 -qp 0 -r 30 \
-		"$HOME/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+		"$HOME/video-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! >/tmp/recordingpid
 }
 
@@ -49,7 +49,7 @@ webcamhidef() {
 		-f v4l2 \
 		-i /dev/video0 \
 		-video_size 1920x1080 \
-		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! >/tmp/recordingpid
 }
 
@@ -58,7 +58,7 @@ webcam() {
 		-f v4l2 \
 		-i /dev/video0 \
 		-video_size 640x480 \
-		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! >/tmp/recordingpid
 }
 
@@ -98,7 +98,7 @@ videoselected() {
 		-video_size "$W"x"$H" \
 		-i :0.0+"$X,$Y" \
 		-c:v libx264 -qp 0 -r 30 \
-		"$HOME/box-$(date '+%y%m%d-%H%M-%S').mkv" &
+		"$HOME/box-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! >/tmp/recordingpid
 }
 
