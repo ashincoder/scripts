@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+languages=$(echo "golang lua cpp c typescript nodejs bash python" | tr ' ' '\n')
+utils=$(echo "find xargs sed tr awk ln sort tee sum" | tr ' ' '\n')
+
+selected=$(printf "$languages\n$utils" | fzf)
+read -rp "Enter Query: " query
+
+if printf "$languages" | grep -qs "$selected"; then
+	query=$(echo "$query" | tr ' ' '+')
+	curl cht.sh/"$selected"/"$query"
+else
+	curl cht.sh/"$selected"~"$query"
+fi
