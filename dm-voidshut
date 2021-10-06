@@ -6,16 +6,16 @@
 case "$(readlink -f /sbin/init)" in
 *runit*) sus="sudo -A zzz" ;;
 *openrc*)
-	reb="sudo -A openrc-shutdown -r"
+	reb="sudo -A openrc-shutdown -r 0"
 	shut="sudo -A openrc-shutdown -p 0"
 	;;
 esac
 
 cmds="\
- Lock		slock
- Suspend	slock ${sus}
- Reboot	        ${reb:-sudo -A reboot}
- Shutdown	${shut:-sudo -A shutdown -h now}"
+ lock		slock
+ suspend	slock ${sus}
+ reboot	        ${reb:-sudo -A reboot}
+ shutdown	${shut:-sudo -A shutdown -h now}"
 
 choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu)" || exit 1
 
