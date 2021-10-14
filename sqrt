@@ -1,9 +1,0 @@
-#!/usr/bin/env lua
-
-local function root(var)
-	return math.sqrt(var)
-end
-
-print("Enter number: ")
-number = io.read("*n")
-print(root(number))

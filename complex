@@ -1,0 +1,59 @@
+#!/usr/bin/env lua
+
+--- @param var number
+--- @return number
+local function sqr(var)
+	return var * var
+end
+
+--- @param var number
+--- @return number
+local function root(var)
+	return math.sqrt(var)
+end
+
+--- @param var number
+--- @return number
+local function sin(var)
+	return math.sin(var)
+end
+
+--- @param var number
+--- @return number
+local function cos(var)
+	return math.cos(var)
+end
+
+--- @param var number
+--- @return number
+local function tan(var)
+	return math.tan(var)
+end
+
+while true do
+	print("Select an option: ")
+	print([[
+  1. square
+  2. root
+  3. sin
+  4. cos
+  5. tan
+        ]])
+	local option = io.read("*n")
+
+	--- Asking user input
+	print("Enter number: ")
+	local number = io.read("*n")
+
+	if option == 1 then
+		print(sqr(number))
+	elseif option == 2 then
+		print(root(number))
+	elseif option == 3 then
+		print(sin(number))
+	elseif option == 4 then
+		print(cos(number))
+	elseif option == 5 then
+		print(tan(number))
+	end
+end
