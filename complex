@@ -31,7 +31,7 @@ local function tan(var)
 end
 
 while true do
-	print("Select an option: ")
+	print("Select an option (Select the option number): ")
 	print([[
   1. square
   2. root
