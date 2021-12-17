@@ -10,9 +10,7 @@ else
 	echo "No helper-script found"
 fi
 
-# script will not hit this if there is no config-file to load
-# shellcheck disable=SC1090
-source "$(get_config)"
+DMENU="dmenu"
 
 # use notify-send if run in dumb term
 # TODO: add abillity to control from config.
@@ -59,7 +57,7 @@ main() {
 		;;
 	'Lock screen')
 		# shellcheck disable=SC2154
-		${logout_locker}
+		"${slock}"
 		;;
 	'Reboot')
 		if [[ "$(echo -e "No\nYes" | ${DMENU} -i -p "${choice}?" "${@}")" == "Yes" ]]; then

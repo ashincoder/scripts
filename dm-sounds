@@ -11,12 +11,10 @@ else
   echo "No helper-script found"
 fi
 
-# script will not hit this if there is no config-file to load
-# shellcheck disable=SC1090
-source "$(get_config)"
-
-
 main() {
+
+  sounds_dir="${HOME}/Music"
+
   # Check if sounds_dir is a real directory 
   # shellcheck disable=SC2154
   [ ! -d "${sounds_dir}" ] && err "The dm-sounds folder could not be found, place your sounds in ${sounds_dir}."
@@ -34,15 +32,14 @@ main() {
     "Quit"
   )
 
-
   # Piping the _options array into dmenu.
   # We use "printf '%s\n'" to format the array one item to a line.
-  choice=$(printf '%s\n' "${_options[@]}" | ${DMENU} -i -p 'Songs:' "${@}")
+  choice=$(printf '%s\n' "${_options[@]}" | dmenu -i -p 'Songs:' "${@}")
 
   if [ "$choice" == "Choose sound file" ]; then
     # Piping the soundList array into dmenu.
     # We use "printf '%s\n'" to format the array one item to a line.
-    choice=$(printf '%s\n' "${_sounds_list[@]}" | sort | ${DMENU} -i -l 20 -p 'Choose sound file:' "$@")
+    choice=$(printf '%s\n' "${_sounds_list[@]}" | sort | dmenu -i -l 20 -p 'Choose sound file:' "$@")
     # Kill PID saved in cache file.
     kill "$(cat "$HOME/.cache/dmsounds")" || echo "ffplay was not running."
     # Play the chosen sound file.
